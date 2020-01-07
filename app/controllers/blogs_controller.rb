@@ -15,6 +15,7 @@ class BlogsController < ApplicationController
   def new
   	@blog = Blog.new
   end
+
 #保存
   def create
   	blog = Blog.new(blog_params)
@@ -22,7 +23,22 @@ class BlogsController < ApplicationController
   	redirect_to blogs_path
   end
 
+# 投稿
   def edit
+    @blog = Blog.find(params[:id])
+  end
+
+# 更新
+  def update
+    blog = Blog.find(params[id])
+    blog.update(blog_params)
+    redirect_to blogs_path(blog)
+  end
+# 削除
+  def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy
+    redirect_to blogs_path
   end
 
 private
