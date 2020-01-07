@@ -1,9 +1,16 @@
 class BlogsController < ApplicationController
-  def index
+
+# 詳細ページ
+  def show
+  	@blog = Blog.find(params[:id])
   end
 
-  def show
+# Topページ
+  def index
+  	# 記事を全件取得
+  	@blogs = Blog.all
   end
+
 # 投稿フォーム表示
   def new
   	@blog = Blog.new
